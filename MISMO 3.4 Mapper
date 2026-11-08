@@ -1,0 +1,12 @@
+{
+  "name": "@orchestrator/mismo-mapper",
+  "version": "1.0.0",
+  "main": "dist/buildMismo.js",
+  "types": "dist/buildMismo.d.ts",
+  "dependencies": {
+    "@orchestrator/rules-engine": "*"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}
