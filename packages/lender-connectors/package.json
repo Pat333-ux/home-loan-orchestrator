@@ -1,0 +1,9 @@
+{
+  "name": "@orchestrator/lender-connectors",
+  "version": "1.0.0",
+  "main": "dist/dispatcher.js",
+  "types": "dist/dispatcher.d.ts",
+  "scripts": {
+    "build": "tsc"
+  }
+}
