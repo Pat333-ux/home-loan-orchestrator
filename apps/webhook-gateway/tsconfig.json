@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "references": [
+    { "path": "../../packages/rules-engine" },
+    { "path": "../../packages/mismo-mapper" },
+    { "path": "../../packages/lender-connectors" },
+    { "path": "../../packages/token-settlement" }
+  ]
+}
