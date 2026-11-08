@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>New World Order Home Loan Assistance</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; background: #0f172a; color: #f8fafc; }
+    .card { background: #1e293b; padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem; }
+    label { display: block; margin-top: 0.75rem; font-size: 0.9rem; color: #cbd5e1; }
+    input, select { width: 100%; padding: 0.55rem; margin-top: 0.25rem; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; }
+    button { margin-top: 1.25rem; padding: 0.75rem 1.25rem; background: #2563eb; color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
+    pre { background: #020617; padding: 1rem; border-radius: 6px; overflow-x: auto; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <h1>New World Order Home Loan Assistance</h1>
+  <div class="card">
+    <h2>Borrower Intake &amp; Auto-Qualification (Indiana)</h2>
+    <form id="loanForm">
+      <label>First Name <input name="firstName" value="Alex" required /></label>
+      <label>Last Name <input name="lastName" value="Mercer" required /></label>
+      <label>Email <input name="email" type="email" value="member@example.org" required /></label>
+      <label>LUCR Wallet Address <input name="walletAddress" value="0x71C7656EC7ab88b098defB751B7401B5f6d8976F" required /></label>
+      <label>County (Indiana) <input name="county" value="Vigo" required /></label>
+      <label>Annual Household Income ($) <input name="annualHouseholdIncome" type="number" value="78000" required /></label>
+      <label>Monthly Debt Payments ($) <input name="monthlyDebtPayments" type="number" value="350" required /></label>
+      <label>Credit Score (FICO) <input name="creditScore" type="number" value="685" required /></label>
+      <label>Home Purchase Price ($) <input name="purchasePrice" type="number" value="240000" required /></label>
+      <label>Requested Loan Amount ($) <input name="loanAmount" type="number" value="231600" required /></label>
+      <label>First-Time Homebuyer (No ownership in past 3 years)
+        <select name="firstTimeBuyer">
+          <option value="true" selected>Yes</option>
+          <option value="false">No</option>
+        </select>
+      </label>
+      <button type="submit">Check State Programs &amp; Auto-Submit MISMO 3.4</button>
+    </form>
+  </div>
+  <div class="card">
+    <h3>Orchestration Output</h3>
+    <pre id="output">Submit the form to evaluate IHCDA eligibility and generate MISMO 3.4 packets...</pre>
+  </div>
+
+  <script>
+    document.getElementById("loanForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const payload = {
+        borrowerId: "NWO-" + Date.now(),
+        firstName: fd.get("firstName"),
+        lastName: fd.get("lastName"),
+        email: fd.get("email"),
+        walletAddress: fd.get("walletAddress"),
+        county: fd.get("county"),
+        annualHouseholdIncome: Number(fd.get("annualHouseholdIncome")),
+        monthlyDebtPayments: Number(fd.get("monthlyDebtPayments")),
+        creditScore: Number(fd.get("creditScore")),
+        purchasePrice: Number(fd.get("purchasePrice")),
+        loanAmount: Number(fd.get("loanAmount")),
+        firstTimeBuyer: fd.get("firstTimeBuyer") === "true",
+        isPrimaryResidence: true,
+        attachmentType: "Detached",
+        constructionMethod: "SiteBuilt"
+      };
+
+      const res = await fetch("http://localhost:4000/api/applications/originate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
