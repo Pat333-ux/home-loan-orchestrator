@@ -1,0 +1,43 @@
+export function buildMismoPayload(applicant: any, selectedProgram: string): string {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<MESSAGE xmlns="http://www.mismo.org/residential/2009/schemas" MISMOReferenceModelIdentifier="3.4.032420160128">
+  <DEAL_SETS>
+    <DEAL_SET>
+      <DEALS>
+        <DEAL>
+          <LOANS>
+            <LOAN LoanRoleType="SubjectLoan">
+              <TERMS_OF_LOAN>
+                <BaseLoanAmount>${applicant.loanAmount}</BaseLoanAmount>
+                <LoanPurposeType>Purchase</LoanPurposeType>
+              </TERMS_OF_LOAN>
+              <GOVERNMENT_LOAN>
+                <SectionOfActType>${selectedProgram}</SectionOfActType>
+              </GOVERNMENT_LOAN>
+            </LOAN>
+          </LOANS>
+          <PARTIES>
+            <PARTY>
+              <INDIVIDUAL>
+                <NAME>
+                  <FirstName>${applicant.firstName}</FirstName>
+                  <LastName>${applicant.lastName}</LastName>
+                </NAME>
+              </INDIVIDUAL>
+              <ROLES>
+                <ROLE>
+                  <BORROWER>
+                    <DECLARATION>
+                      <HomeownerPastThreeYearsType>${!applicant.firstTimeBuyer}</HomeownerPastThreeYearsType>
+                    </DECLARATION>
+                  </BORROWER>
+                </ROLE>
+              </ROLES>
+            </PARTY>
+          </PARTIES>
+        </DEAL>
+      </DEALS>
+    </DEAL_SET>
+  </DEAL_SETS>
+</MESSAGE>`;
+}
