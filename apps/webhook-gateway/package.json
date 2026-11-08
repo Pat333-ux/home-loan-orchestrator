@@ -1,0 +1,19 @@
+{
+  "name": "@orchestrator/webhook-gateway",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "dependencies": {
+    "@orchestrator/lender-connectors": "*",
+    "@orchestrator/mismo-mapper": "*",
+    "@orchestrator/rules-engine": "*",
+    "@orchestrator/token-settlement": "*",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js"
+  }
+}
