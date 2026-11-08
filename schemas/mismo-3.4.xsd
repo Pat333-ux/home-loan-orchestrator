@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.mismo.org/residential/2009/schemas"
+           xmlns="http://www.mismo.org/residential/2009/schemas"
+           elementFormDefault="qualified">
+  <!-- Minimal structural validation subset for URLA / Form 1003 MISMO 3.4 payloads -->
+  <xs:element name="MESSAGE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DEAL_SETS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DEAL_SET">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DEALS">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="DEAL" type="xs:anyType"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="MISMOReferenceModelIdentifier" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
