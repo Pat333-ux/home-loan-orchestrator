@@ -1,0 +1,9 @@
+{
+  "name": "@orchestrator/rules-engine",
+  "version": "1.0.0",
+  "main": "dist/indiana.js",
+  "types": "dist/indiana.d.ts",
+  "scripts": {
+    "build": "tsc"
+  }
+}
