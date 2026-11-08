@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  webhook-gateway:
+    build:
+      context: .
+      dockerfile: apps/webhook-gateway/Dockerfile
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    restart: unless-stopped
